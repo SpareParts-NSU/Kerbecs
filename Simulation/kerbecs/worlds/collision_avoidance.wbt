@@ -1,0 +1,101 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.08568487586060541 0.9581947801496995 0.2729851009535533 2.534899960250214
+  position 1.1358643701187492 1.0628707890316205 -1.3571296398455335
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorTileSize 0.25 0.25
+  wallHeight 0.05
+  wallAppearance BrushedAluminium {
+    colorOverride 0 0 1
+  }
+}
+WoodenBox {
+  translation 0.362952 0.0499509 0.428331
+  rotation 0.7071067730910473 3.217834373527065e-08 -0.7071067892820468 -2.1188543347892987e-10
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.25
+}
+WoodenBox {
+  translation -0.379808 0.0500213 0.427989
+  rotation -0.01412800546948214 -0.016803083855659276 -0.9997589988764262 0.004056991132504021
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.25
+}
+WoodenBox {
+  translation 0.326243 0.0499509 -0.434787
+  rotation 0.7071068166028974 3.24173006748656e-08 -0.707106745770195 -2.1188543007017319e-10
+  size 0.1 0.1 0.1
+  mass 0.25
+}
+E-puck {
+  translation -2.338678413965405e-07 -3.198254917731458e-05 -0.05151755003708807
+  rotation 1.160749999977935e-06 0.9999999999809908 -6.055659999884887e-06 -3.1415853071795863
+  controller "e-puck_avoid_collision"
+}
+DEF BALL Solid {
+  translation 0.17 0.239589 0.19
+  children [
+    DEF BALL Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/varnished_wood.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL
+  physics Physics {
+  }
+}
+DEF WALL_1 Solid {
+  translation -0.46549 0.0488533 -6.7997e-07
+  rotation 0.0014904791555867543 0.002587686917032375 0.9999955411642125 -0.01908120521369133
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/interlaced_parquetry.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.05 0.1 0.9
+      }
+    }
+  ]
+  name "wall"
+  boundingObject USE WALL
+  physics Physics {
+  }
+}
+DEF WALL_2 Solid {
+  translation 0.46 0.05 0
+  children [
+    USE WALL
+  ]
+  name "solid(1)"
+  boundingObject USE WALL
+  physics Physics {
+  }
+}

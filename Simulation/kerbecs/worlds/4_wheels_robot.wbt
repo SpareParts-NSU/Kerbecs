@@ -1,0 +1,665 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material2 "dumbbell"
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.02613407166274376 -0.9655691365913734 -0.25883054835261615 2.9707245082785123
+  position 0.42272892159869696 1.151516871662177 -2.0785725729114946
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0.01 4.69516e-08 0
+  rotation 0 0 1 4.692820414042842e-06
+  floorSize 10 10
+  wallHeight 0.05
+  wallAppearance BrushedAluminium {
+    colorOverride 0 0 1
+  }
+}
+WoodenBox {
+  translation 0.362952 0.0499509 0.428331
+  rotation 0.7071067730910473 3.217834373527065e-08 -0.7071067892820468 -2.1188543347892987e-10
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.25
+}
+WoodenBox {
+  translation -0.379808 0.0500213 0.427989
+  rotation -0.01412800546948214 -0.016803083855659276 -0.9997589988764262 0.004056991132504021
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.25
+}
+WoodenBox {
+  translation 0.326243 0.0499509 -0.434787
+  rotation 0.7071068166028974 3.24173006748656e-08 -0.707106745770195 -2.1188543007017319e-10
+  size 0.1 0.1 0.1
+  mass 0.25
+}
+E-puck {
+  translation -0.3 -3.12862e-05 -0.0515152
+  rotation 1.160749999977935e-06 0.9999999999809908 -6.055659999884887e-06 -3.1415853071795863
+  controller "e-puck_avoid_collision"
+}
+DEF BALL Solid {
+  translation 0.42 0.239589 0.19
+  children [
+    DEF BALL Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/varnished_wood.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL
+  physics Physics {
+  }
+}
+DEF WALL_1 Solid {
+  translation -0.46549 0.0488533 -6.7997e-07
+  rotation 0.0014904791555867543 0.002587686917032375 0.9999955411642125 -0.01908120521369133
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/interlaced_parquetry.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.05 0.1 0.9
+      }
+    }
+  ]
+  name "wall"
+  boundingObject USE WALL
+  physics Physics {
+  }
+}
+DEF WALL_2 Solid {
+  translation 0.46 0.05 0
+  children [
+    USE WALL
+  ]
+  name "solid(1)"
+  boundingObject USE WALL
+  physics Physics {
+  }
+}
+DEF DUMBLE Solid {
+  translation -0.2 0.21 -0.32
+  rotation 1 0 0 1.5708
+  children [
+    DEF G0 Group {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/metal.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+        Transform {
+          translation 0 -0.05 0
+          children [
+            DEF WEIGHT Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "textures/metal.jpg"
+                  ]
+                }
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0.05 0
+          children [
+            USE WEIGHT
+          ]
+        }
+      ]
+    }
+  ]
+  name "solid(2)"
+  contactMaterial "dumbbell"
+  boundingObject USE G0
+  physics Physics {
+  }
+}
+DEF AVOIDER Robot {
+  translation 0.3 0.04 -0.19
+  children [
+    DistanceSensor {
+      translation 0.025 0 0.1
+      rotation 0 -1 0 1.309
+      children [
+        DEF DS Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "textures/grid.png"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      boundingObject USE DS
+      physics Physics {
+      }
+    }
+    DistanceSensor {
+      translation -0.025 0 0.1
+      rotation 0 1 0 -1.8325953071795862
+      children [
+        USE DS
+      ]
+      name "ds_right"
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 0 0.05
+        rotation 0 0 1 1.570800000000193
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColorMap ImageTexture {
+                url [
+                  "textures/varnished_wood.jpg"
+                ]
+              }
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation 0.06 0 -0.05
+        rotation -9.953835861122687e-07 9.95387242367051e-07 0.9999999999990093 1.5708000000009896
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.06 0 0.05
+        rotation 0 0 1 1.5708
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.06 0 -0.05
+        rotation 0 0 1 1.5708
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/metal.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "4_wheels_collision_avoidance"
+}
+DEF KERBECS Robot {
+  translation 1.06 0.3 0
+  rotation 0 0 1 4.692820414042842e-06
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.1 0.03 -0.12
+      }
+      device [
+        RotationalMotor {
+          name "hinge_front_left"
+        }
+      ]
+      endPoint Solid {
+        translation 0.1 0.03 -0.12
+        rotation -0.9997148545716881 -0.014602044908748333 0.01889417458349203 1.5473462216213813e-05
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 0 -0.0631
+            }
+            device [
+              RotationalMotor {
+                name "thigh_front_left"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.05 -0.0631
+              rotation -0.9915457973732542 -0.10614597830860246 0.07463218474858477 5.307156870259904e-06
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.05 -0.0571
+                  }
+                  device [
+                    RotationalMotor {
+                      name "shin_front_left"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.125 -0.05715
+                    rotation -1 0 0 7.98668878485373e-06
+                    children [
+                      DEF SHIN Shape {
+                        appearance PBRAppearance {
+                          baseColorMap ImageTexture {
+                            url [
+                              "textures/metal.jpg"
+                            ]
+                          }
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Cylinder {
+                          height 0.2
+                          radius 0.01905
+                        }
+                      }
+                    ]
+                    boundingObject USE SHIN
+                    physics Physics {
+                    }
+                  }
+                }
+                DEF THIGH Shape {
+                  appearance PBRAppearance {
+                    baseColorMap ImageTexture {
+                      url [
+                        "textures/metal.jpg"
+                      ]
+                    }
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    height 0.15
+                    radius 0.0381
+                  }
+                }
+              ]
+              boundingObject USE THIGH
+              physics Physics {
+              }
+            }
+          }
+          DEF UPPER_HINGE Shape {
+            appearance PBRAppearance {
+              baseColorMap ImageTexture {
+                url [
+                  "textures/light_asphalt.jpg"
+                ]
+              }
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.16 0.05 0.05
+            }
+          }
+        ]
+        boundingObject USE UPPER_HINGE
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.1 0.03 0.12
+      }
+      device [
+        RotationalMotor {
+          name "hinge_front_right"
+        }
+      ]
+      endPoint Solid {
+        translation 0.0999999999999998 0.029999599030607147 0.12000010024149799
+        rotation 1 0 0 3.6665335891799574e-06
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 0 0.0631
+            }
+            device [
+              RotationalMotor {
+                name "thigh_front_right"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.05 0.0631
+              rotation -0.9391514842642674 0.16297910169082014 0.3023777472240262 8.503955743589718e-06
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.05 0.0571
+                  }
+                  device [
+                    RotationalMotor {
+                      name "shin_front_right"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.125 0.05715
+                    rotation 0 0 1 0
+                    children [
+                      USE SHIN
+                    ]
+                    boundingObject USE SHIN
+                    physics Physics {
+                    }
+                  }
+                }
+                USE THIGH
+              ]
+              boundingObject USE THIGH
+              physics Physics {
+              }
+            }
+          }
+          USE UPPER_HINGE
+        ]
+        boundingObject USE UPPER_HINGE
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.1 0.03 -0.12
+      }
+      device [
+        RotationalMotor {
+          name "hinge_back_left"
+        }
+      ]
+      endPoint Solid {
+        translation -0.09999999999999976 0.029999528950376764 -0.12000011776028754
+        rotation -1 0 0 6.1950132780546235e-06
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 0 -0.0631
+            }
+            device [
+              RotationalMotor {
+                name "thigh_back_left"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.04999999726014225 -0.0631000021710441
+              rotation 1 0 0 4.2146848510894035e-08
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.05 -0.0571
+                  }
+                  device [
+                    RotationalMotor {
+                      name "shin_back_left"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.125 -0.05715
+                    rotation 0 0 1 0
+                    children [
+                      USE SHIN
+                    ]
+                    boundingObject USE SHIN
+                    physics Physics {
+                    }
+                  }
+                }
+                USE THIGH
+              ]
+              boundingObject USE THIGH
+              physics Physics {
+              }
+            }
+          }
+          USE UPPER_HINGE
+        ]
+        boundingObject USE UPPER_HINGE
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.1 0.03 0.12
+      }
+      device [
+        RotationalMotor {
+          name "hinge_back_right"
+        }
+      ]
+      endPoint Solid {
+        translation -0.09999999999999988 0.029997857397424343 0.12000053562919431
+        rotation 1 0 0 1.83490360136059e-05
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 0 0.0631
+            }
+            device [
+              RotationalMotor {
+                name "thigh_back_right"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.05 0.0631
+              rotation -0.5772423480136403 0.011739407077571156 0.8164884922527484 2.7445657538995025e-06
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.05 0.0571
+                  }
+                  device [
+                    RotationalMotor {
+                      name "shin_back_right"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.125 0.05715
+                    rotation -0.5930078895647103 0.038331958761548095 -0.8042837209912379 5.101161763793457e-06
+                    children [
+                      USE SHIN
+                    ]
+                    boundingObject USE SHIN
+                    physics Physics {
+                    }
+                  }
+                }
+                USE THIGH
+              ]
+              boundingObject USE THIGH
+              physics Physics {
+              }
+            }
+          }
+          USE UPPER_HINGE
+        ]
+        boundingObject USE UPPER_HINGE
+        physics Physics {
+        }
+      }
+    }
+    DEF BODY_GROUP Group {
+      children [
+        Transform {
+          translation 0.19 0.025 0
+          children [
+            DEF SPOILER Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 0.055 0.3
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.19 0.025 0
+          children [
+            USE SPOILER
+          ]
+        }
+        Transform {
+          translation 0 0.025 0
+          children [
+            DEF MID_BAR Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.04 0.055 0.3
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance PBRAppearance {
+            transparency 0.5
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.4 0.005 0.2
+          }
+        }
+      ]
+    }
+  ]
+  name "kerbecs"
+  boundingObject USE BODY_GROUP
+  physics Physics {
+  }
+  controller "kerbecs_controller"
+  selfCollision TRUE
+}
