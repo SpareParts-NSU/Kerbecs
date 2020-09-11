@@ -1,0 +1,48 @@
+[rospy.client][INFO] 2020-01-16 12:25:05,065: init_node, name[/talker_10208_1579155905057], pid[10208]
+[xmlrpc][INFO] 2020-01-16 12:25:05,065: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2020-01-16 12:25:05,068: Started XML-RPC server [http://192.168.0.118:52194/]
+[rospy.init][INFO] 2020-01-16 12:25:05,068: ROS Slave URI: [http://192.168.0.118:52194/]
+[rospy.impl.masterslave][INFO] 2020-01-16 12:25:05,069: _ready: http://192.168.0.118:52194/
+[xmlrpc][INFO] 2020-01-16 12:25:05,069: xml rpc node: starting XML-RPC server
+[rospy.registration][INFO] 2020-01-16 12:25:05,072: Registering with master node http://192.168.0.102:11311
+[rospy.registration][INFO] 2020-01-16 12:25:05,072: Registering publisher topic [/chatter] type [std_msgs/String] with master
+[rospy.init][INFO] 2020-01-16 12:25:05,170: registered with master
+[rospy.rosout][INFO] 2020-01-16 12:25:05,170: initializing /rosout core topic
+[rospy.rosout][INFO] 2020-01-16 12:25:05,184: connected to core topic /rosout
+[rospy.simtime][INFO] 2020-01-16 12:25:05,194: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rosout][INFO] 2020-01-16 12:25:05,207: hello world 1579155905.21
+[rosout][INFO] 2020-01-16 12:25:07,213: hello world 1579155907.21
+[rospy.internal][INFO] 2020-01-16 12:25:09,213: topic[/rosout] adding connection to [/rosout], count 0
+[rosout][INFO] 2020-01-16 12:25:09,213: hello world 1579155909.21
+[rosout][INFO] 2020-01-16 12:25:11,223: hello world 1579155911.22
+[rosout][INFO] 2020-01-16 12:25:13,223: hello world 1579155913.22
+[rosout][INFO] 2020-01-16 12:25:15,260: hello world 1579155915.26
+[rosout][INFO] 2020-01-16 12:25:17,265: hello world 1579155917.27
+[rosout][INFO] 2020-01-16 12:25:19,309: hello world 1579155919.31
+[rosout][INFO] 2020-01-16 12:25:21,319: hello world 1579155921.32
+[rosout][INFO] 2020-01-16 12:25:23,328: hello world 1579155923.33
+[rosout][INFO] 2020-01-16 12:25:25,365: hello world 1579155925.37
+[rospy.internal][INFO] 2020-01-16 12:25:27,361: topic[/chatter] adding connection to [/rostopic_24811_1579155923673], count 0
+[rosout][INFO] 2020-01-16 12:25:27,361: hello world 1579155927.36
+[rosout][INFO] 2020-01-16 12:25:29,401: hello world 1579155929.4
+[rosout][INFO] 2020-01-16 12:25:31,390: hello world 1579155931.39
+[rosout][INFO] 2020-01-16 12:25:33,398: hello world 1579155933.4
+[rosout][INFO] 2020-01-16 12:25:35,407: hello world 1579155935.41
+[rosout][INFO] 2020-01-16 12:25:37,430: hello world 1579155937.43
+[rosout][INFO] 2020-01-16 12:25:39,433: hello world 1579155939.43
+[rosout][INFO] 2020-01-16 12:25:41,467: hello world 1579155941.47
+[rosout][INFO] 2020-01-16 12:25:43,440: hello world 1579155943.44
+[rosout][INFO] 2020-01-16 12:25:45,489: hello world 1579155945.49
+[rosout][INFO] 2020-01-16 12:25:47,490: hello world 1579155947.49
+[rosout][INFO] 2020-01-16 12:25:49,529: hello world 1579155949.53
+[rosout][INFO] 2020-01-16 12:25:51,526: hello world 1579155951.53
+[rosout][INFO] 2020-01-16 12:25:53,540: hello world 1579155953.54
+[rosout][INFO] 2020-01-16 12:25:55,555: hello world 1579155955.56
+[rosout][INFO] 2020-01-16 12:25:57,647: hello world 1579155957.65
+[rosout][INFO] 2020-01-16 12:25:59,683: hello world 1579155959.68
+[rosout][INFO] 2020-01-16 12:26:01,724: hello world 1579155961.72
+[rosout][INFO] 2020-01-16 12:26:03,701: hello world 1579155963.7
+[rosout][INFO] 2020-01-16 12:26:05,736: hello world 1579155965.74
+[rosout][INFO] 2020-01-16 12:26:07,769: hello world 1579155967.77
+[rosout][INFO] 2020-01-16 12:26:09,770: hello world 1579155969.77
+[rosout][INFO] 2020-01-16 12:26:11,736: hello world 1579155971.74

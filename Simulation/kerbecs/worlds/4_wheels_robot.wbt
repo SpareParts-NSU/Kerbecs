@@ -1,4 +1,4 @@
-#VRML_SIM R2019b utf8
+#VRML_SIM R2020a utf8
 WorldInfo {
   basicTimeStep 16
   contactProperties [
@@ -11,8 +11,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.02613407166274376 -0.9655691365913734 -0.25883054835261615 2.9707245082785123
-  position 0.42272892159869696 1.151516871662177 -2.0785725729114946
+  orientation -0.016504855034102518 -0.9515794742386774 -0.3069594337497151 3.0591822248818574
+  position 0.691520084641991 3.2822140266302706 -4.362522383207619
 }
 TexturedBackground {
 }
@@ -46,11 +46,6 @@ WoodenBox {
   rotation 0.7071068166028974 3.24173006748656e-08 -0.707106745770195 -2.1188543007017319e-10
   size 0.1 0.1 0.1
   mass 0.25
-}
-E-puck {
-  translation -0.3 -3.12862e-05 -0.0515152
-  rotation 1.160749999977935e-06 0.9999999999809908 -6.055659999884887e-06 -3.1415853071795863
-  controller "e-puck_avoid_collision"
 }
 DEF BALL Solid {
   translation 0.42 0.239589 0.19
@@ -164,156 +159,6 @@ DEF DUMBLE Solid {
   physics Physics {
   }
 }
-DEF AVOIDER Robot {
-  translation 0.3 0.04 -0.19
-  children [
-    DistanceSensor {
-      translation 0.025 0 0.1
-      rotation 0 -1 0 1.309
-      children [
-        DEF DS Shape {
-          appearance PBRAppearance {
-            baseColorMap ImageTexture {
-              url [
-                "textures/grid.png"
-              ]
-            }
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "ds_left"
-      boundingObject USE DS
-      physics Physics {
-      }
-    }
-    DistanceSensor {
-      translation -0.025 0 0.1
-      rotation 0 1 0 -1.8325953071795862
-      children [
-        USE DS
-      ]
-      name "ds_right"
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        anchor 0.06 0 0.05
-      }
-      device [
-        RotationalMotor {
-          name "wheel1"
-        }
-      ]
-      endPoint Solid {
-        translation 0.06 0 0.05
-        rotation 0 0 1 1.570800000000193
-        children [
-          DEF WHEEL Shape {
-            appearance PBRAppearance {
-              baseColorMap ImageTexture {
-                url [
-                  "textures/varnished_wood.jpg"
-                ]
-              }
-              roughness 1
-              metalness 0
-            }
-            geometry Cylinder {
-              height 0.02
-              radius 0.04
-            }
-          }
-        ]
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        anchor 0.06 0 -0.05
-      }
-      device [
-        RotationalMotor {
-          name "wheel3"
-        }
-      ]
-      endPoint Solid {
-        translation 0.06 0 -0.05
-        rotation -9.953835861122687e-07 9.95387242367051e-07 0.9999999999990093 1.5708000000009896
-        children [
-          USE WHEEL
-        ]
-        name "solid(1)"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        anchor -0.06 0 0.05
-      }
-      device [
-        RotationalMotor {
-          name "wheel2"
-        }
-      ]
-      endPoint Solid {
-        translation -0.06 0 0.05
-        rotation 0 0 1 1.5708
-        children [
-          USE WHEEL
-        ]
-        name "solid(1)"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        anchor -0.06 0 -0.05
-      }
-      device [
-        RotationalMotor {
-          name "wheel4"
-        }
-      ]
-      endPoint Solid {
-        translation -0.06 0 -0.05
-        rotation 0 0 1 1.5708
-        children [
-          USE WHEEL
-        ]
-        name "solid(1)"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    DEF BODY Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "textures/metal.jpg"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.1 0.05 0.2
-      }
-    }
-  ]
-  boundingObject USE BODY
-  physics Physics {
-  }
-  controller "4_wheels_collision_avoidance"
-}
 DEF KERBECS Robot {
   translation 1.06 0.3 0
   rotation 0 0 1 4.692820414042842e-06
@@ -323,8 +168,13 @@ DEF KERBECS Robot {
         anchor 0.1 0.03 -0.12
       }
       device [
+        PositionSensor {
+          name "position_sensor_hip_front_left"
+        }
         RotationalMotor {
-          name "hinge_front_left"
+          name "hip_front_left"
+          maxVelocity 1.70068
+          maxTorque 16181
         }
       ]
       endPoint Solid {
@@ -337,8 +187,13 @@ DEF KERBECS Robot {
               anchor 0 0 -0.0631
             }
             device [
+              PositionSensor {
+                name "position_sensor_thigh_front_left"
+              }
               RotationalMotor {
                 name "thigh_front_left"
+                maxVelocity 1.70068
+                maxTorque 16181
               }
             ]
             endPoint Solid {
@@ -351,8 +206,13 @@ DEF KERBECS Robot {
                     anchor 0 -0.05 -0.0571
                   }
                   device [
+                    PositionSensor {
+                      name "position_sensor_shin_front_left"
+                    }
                     RotationalMotor {
                       name "shin_front_left"
+                      maxVelocity 1.70068
+                      maxTorque 16181
                     }
                   ]
                   endPoint Solid {
@@ -416,6 +276,7 @@ DEF KERBECS Robot {
             }
           }
         ]
+        name "hip_front_left"
         boundingObject USE UPPER_HINGE
         physics Physics {
         }
@@ -426,8 +287,13 @@ DEF KERBECS Robot {
         anchor 0.1 0.03 0.12
       }
       device [
+        PositionSensor {
+          name "position_sensor_hip_front_right"
+        }
         RotationalMotor {
-          name "hinge_front_right"
+          name "hip_front_right"
+          maxVelocity 1.70068
+          maxTorque 16181
         }
       ]
       endPoint Solid {
@@ -440,8 +306,13 @@ DEF KERBECS Robot {
               anchor 0 0 0.0631
             }
             device [
+              PositionSensor {
+                name "position_sensor_thigh_front_right"
+              }
               RotationalMotor {
                 name "thigh_front_right"
+                maxVelocity 1.70068
+                maxTorque 16181
               }
             ]
             endPoint Solid {
@@ -454,8 +325,13 @@ DEF KERBECS Robot {
                     anchor 0 -0.05 0.0571
                   }
                   device [
+                    PositionSensor {
+                      name "position_sensor_shin_front_right"
+                    }
                     RotationalMotor {
                       name "shin_front_right"
+                      maxVelocity 1.70068
+                      maxTorque 16181
                     }
                   ]
                   endPoint Solid {
@@ -478,6 +354,7 @@ DEF KERBECS Robot {
           }
           USE UPPER_HINGE
         ]
+        name "hip_front_right"
         boundingObject USE UPPER_HINGE
         physics Physics {
         }
@@ -488,8 +365,13 @@ DEF KERBECS Robot {
         anchor -0.1 0.03 -0.12
       }
       device [
+        PositionSensor {
+          name "position_sensor_hip_back_left"
+        }
         RotationalMotor {
-          name "hinge_back_left"
+          name "hip_back_left"
+          maxVelocity 1.70068
+          maxTorque 16181
         }
       ]
       endPoint Solid {
@@ -502,8 +384,13 @@ DEF KERBECS Robot {
               anchor 0 0 -0.0631
             }
             device [
+              PositionSensor {
+                name "position_sensor_thigh_back_left"
+              }
               RotationalMotor {
                 name "thigh_back_left"
+                maxVelocity 1.70068
+                maxTorque 16181
               }
             ]
             endPoint Solid {
@@ -516,8 +403,13 @@ DEF KERBECS Robot {
                     anchor 0 -0.05 -0.0571
                   }
                   device [
+                    PositionSensor {
+                      name "position_sensor_shin_back_left"
+                    }
                     RotationalMotor {
                       name "shin_back_left"
+                      maxVelocity 1.70068
+                      maxTorque 16181
                     }
                   ]
                   endPoint Solid {
@@ -540,6 +432,7 @@ DEF KERBECS Robot {
           }
           USE UPPER_HINGE
         ]
+        name "hip_back_left"
         boundingObject USE UPPER_HINGE
         physics Physics {
         }
@@ -550,8 +443,13 @@ DEF KERBECS Robot {
         anchor -0.1 0.03 0.12
       }
       device [
+        PositionSensor {
+          name "position_sensor_hip_back_right"
+        }
         RotationalMotor {
-          name "hinge_back_right"
+          name "hip_back_right"
+          maxVelocity 1.70068
+          maxTorque 16181
         }
       ]
       endPoint Solid {
@@ -564,8 +462,13 @@ DEF KERBECS Robot {
               anchor 0 0 0.0631
             }
             device [
+              PositionSensor {
+                name "position_sensor_thigh_back_right"
+              }
               RotationalMotor {
                 name "thigh_back_right"
+                maxVelocity 1.70068
+                maxTorque 16181
               }
             ]
             endPoint Solid {
@@ -578,8 +481,13 @@ DEF KERBECS Robot {
                     anchor 0 -0.05 0.0571
                   }
                   device [
+                    PositionSensor {
+                      name "position_sensor_shin_back_right"
+                    }
                     RotationalMotor {
                       name "shin_back_right"
+                      maxVelocity 1.70068
+                      maxTorque 16181
                     }
                   ]
                   endPoint Solid {
@@ -602,6 +510,7 @@ DEF KERBECS Robot {
           }
           USE UPPER_HINGE
         ]
+        name "hip_back_right"
         boundingObject USE UPPER_HINGE
         physics Physics {
         }
@@ -660,6 +569,6 @@ DEF KERBECS Robot {
   boundingObject USE BODY_GROUP
   physics Physics {
   }
-  controller "kerbecs_controller"
+  controller "kerbecs_ros"
   selfCollision TRUE
 }

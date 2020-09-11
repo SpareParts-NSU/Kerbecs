@@ -1,0 +1,66 @@
+[rospy.client][INFO] 2020-01-16 12:22:35,069: init_node, name[/talker_4164_1579155755030], pid[4164]
+[xmlrpc][INFO] 2020-01-16 12:22:35,072: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2020-01-16 12:22:35,075: Started XML-RPC server [http://192.168.0.102:52106/]
+[rospy.init][INFO] 2020-01-16 12:22:35,075: ROS Slave URI: [http://192.168.0.102:52106/]
+[rospy.impl.masterslave][INFO] 2020-01-16 12:22:35,075: _ready: http://192.168.0.102:52106/
+[xmlrpc][INFO] 2020-01-16 12:22:35,076: xml rpc node: starting XML-RPC server
+[rospy.registration][INFO] 2020-01-16 12:22:35,078: Registering with master node http://192.168.0.102:11311
+[rospy.registration][INFO] 2020-01-16 12:22:35,078: Registering publisher topic [/chatter] type [std_msgs/String] with master
+[rospy.init][INFO] 2020-01-16 12:22:35,176: registered with master
+[rospy.rosout][INFO] 2020-01-16 12:22:35,176: initializing /rosout core topic
+[rospy.rosout][INFO] 2020-01-16 12:22:35,184: connected to core topic /rosout
+[rospy.simtime][INFO] 2020-01-16 12:22:35,191: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rosout][INFO] 2020-01-16 12:22:35,209: hello world 1579155755.21
+[rosout][INFO] 2020-01-16 12:22:37,171: hello world 1579155757.17
+[rosout][INFO] 2020-01-16 12:22:39,134: hello world 1579155759.13
+[rosout][INFO] 2020-01-16 12:22:41,171: hello world 1579155761.17
+[rosout][INFO] 2020-01-16 12:22:43,167: hello world 1579155763.17
+[rosout][INFO] 2020-01-16 12:22:45,197: hello world 1579155765.2
+[rosout][INFO] 2020-01-16 12:22:47,184: hello world 1579155767.18
+[rosout][INFO] 2020-01-16 12:22:49,190: hello world 1579155769.19
+[rosout][INFO] 2020-01-16 12:22:51,193: hello world 1579155771.19
+[rosout][INFO] 2020-01-16 12:22:53,219: hello world 1579155773.22
+[rosout][INFO] 2020-01-16 12:22:55,209: hello world 1579155775.21
+[rosout][INFO] 2020-01-16 12:22:57,223: hello world 1579155777.22
+[rosout][INFO] 2020-01-16 12:22:59,256: hello world 1579155779.26
+[rosout][INFO] 2020-01-16 12:23:01,243: hello world 1579155781.24
+[rosout][INFO] 2020-01-16 12:23:03,246: hello world 1579155783.25
+[rosout][INFO] 2020-01-16 12:23:05,286: hello world 1579155785.29
+[rosout][INFO] 2020-01-16 12:23:07,296: hello world 1579155787.3
+[rosout][INFO] 2020-01-16 12:23:09,311: hello world 1579155789.31
+[rosout][INFO] 2020-01-16 12:23:11,298: hello world 1579155791.3
+[rosout][INFO] 2020-01-16 12:23:13,319: hello world 1579155793.32
+[rosout][INFO] 2020-01-16 12:23:15,348: hello world 1579155795.35
+[rosout][INFO] 2020-01-16 12:23:17,368: hello world 1579155797.37
+[rosout][INFO] 2020-01-16 12:23:19,398: hello world 1579155799.4
+[rosout][INFO] 2020-01-16 12:23:21,397: hello world 1579155801.4
+[rosout][INFO] 2020-01-16 12:23:23,437: hello world 1579155803.44
+[rosout][INFO] 2020-01-16 12:23:25,423: hello world 1579155805.42
+[rosout][INFO] 2020-01-16 12:23:27,440: hello world 1579155807.44
+[rosout][INFO] 2020-01-16 12:23:29,428: hello world 1579155809.43
+[rosout][INFO] 2020-01-16 12:23:31,431: hello world 1579155811.43
+[rosout][INFO] 2020-01-16 12:23:33,467: hello world 1579155813.47
+[rosout][INFO] 2020-01-16 12:23:35,464: hello world 1579155815.46
+[rosout][INFO] 2020-01-16 12:23:37,483: hello world 1579155817.48
+[rosout][INFO] 2020-01-16 12:23:39,470: hello world 1579155819.47
+[rosout][INFO] 2020-01-16 12:23:41,497: hello world 1579155821.5
+[rosout][INFO] 2020-01-16 12:23:43,503: hello world 1579155823.5
+[rosout][INFO] 2020-01-16 12:23:45,533: hello world 1579155825.53
+[rosout][INFO] 2020-01-16 12:23:47,529: hello world 1579155827.53
+[rosout][INFO] 2020-01-16 12:23:49,549: hello world 1579155829.55
+[rosout][INFO] 2020-01-16 12:23:51,555: hello world 1579155831.56
+[rosout][INFO] 2020-01-16 12:23:53,588: hello world 1579155833.59
+[rosout][INFO] 2020-01-16 12:23:55,589: hello world 1579155835.59
+[rosout][INFO] 2020-01-16 12:23:57,631: hello world 1579155837.63
+[rosout][INFO] 2020-01-16 12:23:59,631: hello world 1579155839.63
+[rosout][INFO] 2020-01-16 12:24:01,628: hello world 1579155841.63
+[rosout][INFO] 2020-01-16 12:24:03,628: hello world 1579155843.63
+[rosout][INFO] 2020-01-16 12:24:05,710: hello world 1579155845.71
+[rosout][INFO] 2020-01-16 12:24:07,736: hello world 1579155847.74
+[rosout][INFO] 2020-01-16 12:24:09,740: hello world 1579155849.74
+[rosout][INFO] 2020-01-16 12:24:11,772: hello world 1579155851.77
+[rosout][INFO] 2020-01-16 12:24:13,763: hello world 1579155853.76
+[rosout][INFO] 2020-01-16 12:24:15,788: hello world 1579155855.79
+[rosout][INFO] 2020-01-16 12:24:17,786: hello world 1579155857.79
+[rosout][INFO] 2020-01-16 12:24:19,801: hello world 1579155859.8
+[rosout][INFO] 2020-01-16 12:24:21,806: hello world 1579155861.81

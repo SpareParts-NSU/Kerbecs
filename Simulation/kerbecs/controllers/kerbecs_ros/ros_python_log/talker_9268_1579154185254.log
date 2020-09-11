@@ -1,0 +1,15 @@
+[rospy.client][INFO] 2020-01-16 11:56:25,387: init_node, name[/talker_9268_1579154185254], pid[9268]
+[xmlrpc][INFO] 2020-01-16 11:56:25,414: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2020-01-16 11:56:25,424: Started XML-RPC server [http://Ricardo:51272/]
+[rospy.init][INFO] 2020-01-16 11:56:25,424: ROS Slave URI: [http://Ricardo:51272/]
+[rospy.impl.masterslave][INFO] 2020-01-16 11:56:25,424: _ready: http://Ricardo:51272/
+[xmlrpc][INFO] 2020-01-16 11:56:25,426: xml rpc node: starting XML-RPC server
+[rospy.registration][INFO] 2020-01-16 11:56:25,427: Registering with master node http://irfan:11311
+[rospy.registration][INFO] 2020-01-16 11:56:25,427: Registering publisher topic [/chatter] type [std_msgs/String] with master
+[rosout][ERROR] 2020-01-16 11:56:28,605: Unable to immediately register with master node [http://irfan:11311]: master may not be running yet. Will keep trying.
+[rospy.registration][INFO] 2020-01-16 11:56:28,805: Registering publisher topic [/chatter] type [std_msgs/String] with master
+[rospy.init][INFO] 2020-01-16 11:56:31,058: registered with master
+[rospy.rosout][INFO] 2020-01-16 11:56:31,058: initializing /rosout core topic
+[rospy.rosout][INFO] 2020-01-16 11:56:33,260: connected to core topic /rosout
+[rospy.simtime][INFO] 2020-01-16 11:56:35,457: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rosout][INFO] 2020-01-16 11:56:39,759: hello world 1579154199.76
